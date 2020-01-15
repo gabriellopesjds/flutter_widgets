@@ -20,13 +20,23 @@ class HomePage extends StatelessWidget {
         title: Text("Hello Fluter"),
         centerTitle: true,
       ),
-      drawer: Container(
-        color: Colors.green,
-      ),
       body: Container(
         color: Colors.white,
+        child: Center(
+          child: Text(
+            "Bem Vindo!",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.blue,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.red,
+              decorationStyle: TextDecorationStyle.double
+            ),
+          ),
+        ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},),
     );
   }
 }

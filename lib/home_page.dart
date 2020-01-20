@@ -8,48 +8,79 @@ class HomePage extends StatelessWidget {
         title: Text("Hello Fluter"),
         centerTitle: true,
       ),
-      body: _buildBody(context),
+      body: _buildBody(),
     );
   }
 
-  Container _buildBody(context) {
-
-    Size size = MediaQuery.of(context).size;
-
+  Container _buildBody() {
     return Container(
-      height: size.height,
-      color: Colors.amber,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          _buildButton(),
-          _buildButton(),
-          _buildButton(),
-        ],
-      ),
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _buildText(),
+            _buildPageView(),
+            _buildButtons(),
+          ],
+        ));
+  }
+
+  Container _buildPageView() {
+    return Container(
+            height: 300,
+            child: PageView(
+              children: <Widget>[
+                _buildImg("assets/images/dog1.png"),
+                _buildImg("assets/images/dog2.png"),
+                _buildImg("assets/images/dog3.png"),
+                _buildImg("assets/images/dog4.png"),
+                _buildImg("assets/images/dog5.png")
+              ],
+            ),
+          );
+  }
+
+  Column _buildButtons() {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildButton("ListView"),
+            _buildButton("Page 2"),
+            _buildButton("Page 3"),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildButton("Snack"),
+            _buildButton("Dialog"),
+            _buildButton("Toast"),
+          ],
+        )
+      ],
     );
   }
 
-  _buildButton() {
+  _buildButton(String text) {
     return RaisedButton(
-        color: Colors.blue,
-        child: Text(
-          "OK",
-          style: TextStyle(color: Colors.white),
-        ),
-        onPressed: () => _onClickOk());
+      color: Colors.blue,
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.white),
+      ),
+      onPressed: () => _onClickOk(),
+    );
   }
 
   _onClickOk() {
     print("Clicou no botão!");
   }
 
-  _buildImg() {
-    //return Image.network("https://www.clubeparacachorros.com.br/wp-content/uploads/2018/08/pastor-alemao-capa-preta.jpg");
+  _buildImg(String path) {
     return Image.asset(
-      "assets/images/dog1.png",
-      fit: BoxFit.cover,
+      path,
     );
   }
 
@@ -57,13 +88,9 @@ class HomePage extends StatelessWidget {
     return Text(
       "Bem Vindo!",
       style: TextStyle(
-          fontSize: 30,
-          color: Colors.blue,
-          fontWeight: FontWeight.bold,
-          fontStyle: FontStyle.italic,
-          decoration: TextDecoration.underline,
-          decorationColor: Colors.red,
-          decorationStyle: TextDecorationStyle.double),
+        fontSize: 30,
+        color: Colors.blue,
+      ),
     );
   }
 }

@@ -12,17 +12,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _buildBody() {
+  _buildBody() {
     return Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _buildText(),
-            _buildPageView(),
-            _buildButtons(),
-          ],
-        ));
+      color: Colors.green,
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+          color: Colors.amber,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _buildText(),
+              _buildPageView(),
+              _buildButtons(),
+            ],
+          )),
+    );
   }
 
   Container _buildPageView() {

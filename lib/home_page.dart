@@ -8,33 +8,27 @@ class HomePage extends StatelessWidget {
         title: Text("Hello Fluter"),
         centerTitle: true,
       ),
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
-  Container _buildBody() {
+  Container _buildBody(context) {
+
+    Size size = MediaQuery.of(context).size;
+
     return Container(
-        color: Colors.amber,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                _buildButton(),
-                _buildButton(),
-                _buildButton()
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                _buildButton(),
-                _buildButton(),
-                _buildButton()
-              ],
-            )
-          ],
-        ));
+      height: size.height,
+      color: Colors.amber,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          _buildButton(),
+          _buildButton(),
+          _buildButton(),
+        ],
+      ),
+    );
   }
 
   _buildButton() {

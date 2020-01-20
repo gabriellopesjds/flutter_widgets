@@ -15,10 +15,24 @@ class HomePage extends StatelessWidget {
   Container _buildBody() {
     return Container(
       color: Colors.white,
-      child: SizedBox.expand(
-        child: _buildImg(),
+      child: Center(
+        child: _buildButton(),
       ),
     );
+  }
+
+  _buildButton() {
+    return RaisedButton(
+        color: Colors.blue,
+        child: Text(
+          "OK",
+          style: TextStyle(color: Colors.white),
+        ),
+        onPressed: () => _onClickOk());
+  }
+
+  _onClickOk() {
+    print("Clicou no botão!");
   }
 
   _buildImg() {

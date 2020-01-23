@@ -24,17 +24,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //_buildText(),
+            _buildText(),
             _buildPageView(),
-            _buildPageView(),
-            _buildPageView(),
-            //_buildButtons(context),
+            _buildButtons(context),
           ],
         ));
   }
 
-    _buildPageView() {
-    return Expanded(
+  Container _buildPageView() {
+    return Container(
+      height: 300,
       child: PageView(
         children: <Widget>[
           _buildImg("assets/images/dog1.png"),
@@ -86,6 +85,7 @@ class HomePage extends StatelessWidget {
   _buildImg(String path) {
     return Image.asset(
       path,
+      fit: BoxFit.cover,
     );
   }
 

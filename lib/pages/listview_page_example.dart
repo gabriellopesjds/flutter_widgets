@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dog{
@@ -40,12 +41,20 @@ class ListViewPageExample extends StatelessWidget {
           children: <Widget>[
             _buildImg(listDog[index].foto),
             Container(
-              alignment: Alignment.center,
-              child: Text(
-                listDog[index].nome,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                margin: EdgeInsets.all(12),
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.black45
+                ),
+                child: Text(
+                  listDog[index].nome,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30
+                  ),
                 ),
               ),
             )

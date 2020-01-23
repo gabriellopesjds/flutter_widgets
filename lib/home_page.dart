@@ -3,6 +3,7 @@ import 'package:flutter_widgets/nav/nav.dart';
 import 'package:flutter_widgets/pages/hello_page1.dart';
 import 'package:flutter_widgets/pages/hello_page2.dart';
 import 'package:flutter_widgets/pages/hello_page3.dart';
+import 'package:flutter_widgets/pages/listview_page_example.dart';
 import 'package:flutter_widgets/widgets/blue_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            BlueButton("ListView", () => _onClickNavigator(context, HelloPage1())),
+            BlueButton("ListView", () => _onClickNavigator(context, ListViewPageExample())),
             BlueButton("Page 2", () => _onClickNavigator(context, HelloPage2())),
             BlueButton("Page 3",() => _onClickNavigator(context, HelloPage3())),
           ],

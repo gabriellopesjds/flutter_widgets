@@ -24,16 +24,17 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _buildText(),
+            //_buildText(),
             _buildPageView(),
-            _buildButtons(context),
+            _buildPageView(),
+            _buildPageView(),
+            //_buildButtons(context),
           ],
         ));
   }
 
-  Container _buildPageView() {
-    return Container(
-      height: 300,
+    _buildPageView() {
+    return Expanded(
       child: PageView(
         children: <Widget>[
           _buildImg("assets/images/dog1.png"),

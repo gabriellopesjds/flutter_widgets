@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             _buildText(),
             _buildPageView(),
-            _buildButtons(context),
+            _buildButtons(),
           ],
         ));
   }
@@ -47,34 +47,83 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _buildButtons(context) {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  _buildButtons() {
+    return Builder(
+      builder: (BuildContext context) {
+        return Column(
           children: <Widget>[
-            BlueButton("ListView", () => _onClickNavigator(context, ListViewPageExample())),
-            BlueButton("Page 2", () => _onClickNavigator(context, ListViewTeste())),
-            BlueButton("Page 3",() => _onClickNavigator(context, HelloPage3())),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton("ListView",
+                    () => _onClickNavigator(context, ListViewPageExample())),
+                BlueButton("Page 2",
+                    () => _onClickNavigator(context, ListViewTeste())),
+                BlueButton(
+                    "Page 3", () => _onClickNavigator(context, HelloPage3())),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton("Snack", () => _onClickSnack(context)),
+                BlueButton("Dialog", () => _onClickDialog(context)),
+                BlueButton("Toast", () => _onClickToast()),
+              ],
+            )
           ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            BlueButton("Snack", () => _onClickSnack),
-            BlueButton("Dialog", () => _onClickDialog()),
-            BlueButton("Toast", () => _onClickToast()),
-          ],
-        )
-      ],
+        );
+      },
     );
   }
 
-  Function _onClickSnack() {
-    print("_onClickSnack");
+  Function _onClickSnack(BuildContext context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text(
+        "Clicou no Snack :P",
+        style: TextStyle(
+          color: Colors.red,
+        ),
+      ),
+      action: SnackBarAction(
+        label: "DESFAZER",
+        textColor: Colors.amber,
+        onPressed: () {
+          print("Clicou");
+        },
+      ),
+    ));
   }
 
-  Function _onClickDialog() {}
+  Function _onClickDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              title: Text("Title Alert Dialog Flutter"),
+              content: Text("Content Alert Dialog Flutter"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("CANCELAR"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    print("Clicou no OK !!!");
+                  },
+                ),
+              ],
+            ),
+          );
+        });
+  }
 
   Function _onClickToast() {}
 

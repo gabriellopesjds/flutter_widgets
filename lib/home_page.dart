@@ -6,6 +6,7 @@ import 'package:flutter_widgets/pages/hello_page3.dart';
 import 'package:flutter_widgets/pages/listview_page_example.dart';
 import 'package:flutter_widgets/pages/listview_teste.dart';
 import 'package:flutter_widgets/widgets/blue_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -68,7 +69,7 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 BlueButton("Snack", () => _onClickSnack(context)),
                 BlueButton("Dialog", () => _onClickDialog(context)),
-                BlueButton("Toast", () => _onClickToast()),
+                BlueButton("Toast", () => _onClickToast("Testando Toast do Flutter")),
               ],
             )
           ],
@@ -110,13 +111,14 @@ class HomePage extends StatelessWidget {
                   child: Text("CANCELAR"),
                   onPressed: () {
                     Navigator.pop(context);
+                    _onClickToast("Erro ao processar as informações! :/", color: Colors.red);
                   },
                 ),
                 FlatButton(
                   child: Text("OK"),
                   onPressed: () {
                     Navigator.pop(context);
-                    print("Clicou no OK !!!");
+                    _onClickToast("Informaçõe gravadas com sucesso! :D", color: Colors.green);
                   },
                 ),
               ],
@@ -125,7 +127,17 @@ class HomePage extends StatelessWidget {
         });
   }
 
-  Function _onClickToast() {}
+  Function _onClickToast(String msg, {Color color : Colors.red}) {
+    Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIos: 5,
+      backgroundColor: color,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 
   void _onClickNavigator(BuildContext context, Widget page) async {
     String retorno = await push(context, page);

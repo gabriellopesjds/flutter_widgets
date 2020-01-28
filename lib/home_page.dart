@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/drawer_home_page.dart';
 import 'package:flutter_widgets/nav/nav.dart';
 import 'package:flutter_widgets/pages/hello_page1.dart';
 import 'package:flutter_widgets/pages/hello_page2.dart';
@@ -15,6 +16,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Hello Fluter"),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          print("ok");
+        },
+      ),
+      drawer: Drawer(
+        child: DrawerHomePage(),
       ),
       body: _buildBody(context),
     );
@@ -69,7 +79,8 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 BlueButton("Snack", () => _onClickSnack(context)),
                 BlueButton("Dialog", () => _onClickDialog(context)),
-                BlueButton("Toast", () => _onClickToast("Testando Toast do Flutter")),
+                BlueButton(
+                    "Toast", () => _onClickToast("Testando Toast do Flutter")),
               ],
             )
           ],
@@ -111,14 +122,16 @@ class HomePage extends StatelessWidget {
                   child: Text("CANCELAR"),
                   onPressed: () {
                     Navigator.pop(context);
-                    _onClickToast("Erro ao processar as informações! :/", color: Colors.red);
+                    _onClickToast("Erro ao processar as informações! :/",
+                        color: Colors.red);
                   },
                 ),
                 FlatButton(
                   child: Text("OK"),
                   onPressed: () {
                     Navigator.pop(context);
-                    _onClickToast("Informaçõe gravadas com sucesso! :D", color: Colors.green);
+                    _onClickToast("Informaçõe gravadas com sucesso! :D",
+                        color: Colors.green);
                   },
                 ),
               ],
@@ -127,7 +140,7 @@ class HomePage extends StatelessWidget {
         });
   }
 
-  Function _onClickToast(String msg, {Color color : Colors.red}) {
+  Function _onClickToast(String msg, {Color color: Colors.red}) {
     Fluttertoast.showToast(
       msg: msg,
       toastLength: Toast.LENGTH_LONG,

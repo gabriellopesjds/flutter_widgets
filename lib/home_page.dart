@@ -12,21 +12,37 @@ import 'package:fluttertoast/fluttertoast.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello Fluter"),
-        centerTitle: true,
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Hello Fluter"),
+          centerTitle: true,
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(text: "TAB1", icon: Icon(Icons.headset)),
+              Tab(text: "TAB2", icon: Icon(Icons.headset_mic)),
+              Tab(text: "TAB3", icon: Icon(Icons.headset_off)),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            print("ok");
+          },
+        ),
+        drawer: Drawer(
+          child: DrawerHomePage(),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            _buildBody(context),
+            Container(color: Colors.black),
+            Container(color: Colors.green),
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          print("ok");
-        },
-      ),
-      drawer: Drawer(
-        child: DrawerHomePage(),
-      ),
-      body: _buildBody(context),
     );
   }
 

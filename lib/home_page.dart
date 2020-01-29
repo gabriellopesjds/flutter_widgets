@@ -5,7 +5,6 @@ import 'package:flutter_widgets/pages/hello_page1.dart';
 import 'package:flutter_widgets/pages/hello_page2.dart';
 import 'package:flutter_widgets/pages/hello_page3.dart';
 import 'package:flutter_widgets/pages/listview_page_example.dart';
-import 'package:flutter_widgets/pages/listview_teste.dart';
 import 'package:flutter_widgets/widgets/blue_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -85,7 +84,7 @@ class HomePage extends StatelessWidget {
                 BlueButton("ListView",
                     () => _onClickNavigator(context, ListViewPageExample())),
                 BlueButton("Page 2",
-                    () => _onClickNavigator(context, ListViewTeste())),
+                    () => _onClickNavigator(context, HelloPage2())),
                 BlueButton(
                     "Page 3", () => _onClickNavigator(context, HelloPage3())),
               ],
